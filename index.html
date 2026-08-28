@@ -2,572 +2,253 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<script src="https://pl30734386.effectivecpmnetwork.com/0a/26/d1/0a26d1a2181e7ddca7ff242ef949b0c1.js"></script>
-    
-
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Notes Keeper - Dynamic Notes Hub</title>
-    <meta name="author" content="Ayur Saini">
-<meta name="copyright" content="Copyright © 2026 Notes Keeper - Dynamic Notes Hub. All Rights Reserved.">
-    
-    <!-- FontAwesome icons ke liye -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        }
-            
-        body {
-            background-color: #0f172a;
-            color: #f8fafc;
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-        }
-
-        /* Header Navbar */
-        header {
-            background: rgba(30, 41, 59, 0.7);
-            backdrop-filter: blur(10px);
-            padding: 1rem 5%;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            position: sticky;
-            top: 0;
-            z-index: 100;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-        }
-
-        .logo {
-            font-size: 1.8rem;
-            font-weight: 800;
-            background: linear-gradient(135deg, #38bdf8, #818cf8);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            cursor: pointer;
-        }
-
-        .add-btn {
-            background: linear-gradient(135deg, #38bdf8, #818cf8);
-            color: #0f172a;
-            padding: 0.6rem 1.2rem;
-            border-radius: 8px;
-            font-weight: 700;
-            border: none;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-
-        .add-btn:hover {
-            transform: scale(1.05);
-            box-shadow: 0 0 15px rgba(56, 189, 248, 0.4);
-        }
-
-        /* Hero Section */
-        .hero {
-            text-align: center;
-            padding: 3rem 1rem 1.5rem;
-            background: radial-gradient(circle at center, #1e1b4b 0%, #0f172a 70%);
-        }
-
-        .hero h1 {
-            font-size: 2.8rem;
-            margin-bottom: 0.8rem;
-        }
-
-        .hero h1 span {
-            color: #38bdf8;
-        }
-
-        .hero p {
-            color: #94a3b8;
-            font-size: 1.1rem;
-            max-width: 600px;
-            margin: 0 auto 1.5rem;
-        }
-
-        /* Search Bar */
-        .search-container {
-            max-width: 500px;
-            margin: 0 auto;
-            position: relative;
-        }
-
-        .search-container input {
-            width: 100%;
-            padding: 0.9rem 1.5rem 0.9rem 3rem;
-            border-radius: 30px;
-            border: 1px solid #334155;
-            background: #1e293b;
-            color: #fff;
-            font-size: 1rem;
-            outline: none;
-            transition: all 0.3s;
-        }
-
-        .search-container input:focus {
-            border-color: #38bdf8;
-            box-shadow: 0 0 15px rgba(56, 189, 248, 0.3);
-        }
-
-        .search-container i {
-            position: absolute;
-            left: 1.2rem;
-            top: 50%;
-            transform: translateY(-50%);
-            color: #64748b;
-        }
-
-        /* Main Library Grid */
-        .library-section {
-            padding: 2rem 5%;
-            max-width: 1300px;
-            margin: 0 auto;
-            width: 100%;
-        }
-
-        .section-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 2rem;
-        }
-
-        .section-title {
-            font-size: 1.8rem;
-            border-left: 4px solid #38bdf8;
-            padding-left: 1rem;
-        }
-
-        .grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-            gap: 2rem;
-        }
-
-        /* Cards Design */
-        .card {
-            background: #1e293b;
-            border-radius: 16px;
-            padding: 1.8rem;
-            border: 1px solid #334155;
-            transition: all 0.3s ease;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            min-height: 220px;
-        }
-
-        .card:hover {
-            transform: translateY(-8px);
-            border-color: #38bdf8;
-            box-shadow: 0 10px 25px -5px rgba(56, 189, 248, 0.2);
-        }
-
-        .card-header {
-            display: flex;
-            align-items: center;
-            gap: 15px;
-            margin-bottom: 1rem;
-        }
-
-        .card-icon {
-            font-size: 2.2rem;
-            color: #38bdf8;
-        }
-
-        .card-title {
-            font-size: 1.3rem;
-            font-weight: 700;
-        }
-
-        .card-desc {
-            color: #94a3b8;
-            font-size: 0.9rem;
-            line-height: 1.5;
-            margin-bottom: 1.5rem;
-        }
-
-        .card-btn {
-            background: #334155;
-            color: #38bdf8;
-            text-decoration: none;
-            padding: 0.7rem;
-            border-radius: 8px;
-            text-align: center;
-            font-weight: 600;
-            transition: all 0.3s;
-            cursor: pointer;
-            border: none;
-        }
-
-        .card:hover .card-btn {
-            background: #38bdf8;
-            color: #0f172a;
-        }
-
-        /* Empty State Placeholder */
-        .empty-msg {
-            grid-column: 1 / -1;
-            text-align: center;
-            padding: 3rem;
-            color: #64748b;
-            border: 2px dashed #334155;
-            border-radius: 16px;
-        }
-
-        /* Popup Form (Modal) */
-        .modal {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.8);
-            backdrop-filter: blur(5px);
-            justify-content: center;
-            align-items: center;
-            z-index: 1000;
-        }
-
-        .modal-content {
-            background: #1e293b;
-            padding: 2rem;
-            border-radius: 16px;
-            width: 90%;
-            max-width: 450px;
-            border: 1px solid #334155;
-        }
-
-        .modal-content h2 {
-            margin-bottom: 1.5rem;
-            color: #38bdf8;
-        }
-
-        .form-group {
-            margin-bottom: 1.2rem;
-        }
-
-        .form-group label {
-            display: block;
-            margin-bottom: 0.5rem;
-            color: #94a3b8;
-            font-size: 0.9rem;
-        }
-
-        .form-group input, .form-group textarea {
-            width: 100%;
-            padding: 0.8rem;
-            background: #0f172a;
-            border: 1px solid #334155;
-            border-radius: 8px;
-            color: #ffffff;
-            font-size: 1rem;
-            outline: none;
-        }
-
-        .form-group input:focus, .form-group textarea:focus {
-            border-color: #38bdf8;
-        }
-
-        .modal-btns {
-            display: flex;
-            gap: 10px;
-            justify-content: flex-end;
-            margin-top: 1.5rem;
-        }
-
-        .btn-cancel {
-            background: #334155;
-            color: #fff;
-            padding: 0.6rem 1.2rem;
-            border-radius: 8px;
-            border: none;
-            cursor: pointer;
-        }
-
-        .btn-save {
-            background: #38bdf8;
-            color: #0f172a;
-            padding: 0.6rem 1.2rem;
-            border-radius: 8px;
-            border: none;
-            font-weight: 700;
-            cursor: pointer;
-        }
-
-        /* Notes Editor View (Hidden by default) */
-        #editorSection {
-            display: none;
-            padding: 2rem 5%;
-            max-width: 1100px;
-            margin: 0 auto;
-            width: 100%;
-        }
-
-        .back-btn {
-            background: #334155;
-            color: #38bdf8;
-            border: none;
-            padding: 0.6rem 1.2rem;
-            border-radius: 8px;
-            cursor: pointer;
-            margin-bottom: 1.5rem;
-            font-weight: 600;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-
-        .editor-header {
-            margin-bottom: 1.5rem;
-        }
-
-        /* High Visibility Textarea Style */
-        .notes-box {
-            width: 100%;
-            height: 350px;
-            background: #090d16;
-            color: #ffffff; /* Blue ki jagah High-Contrast Pure White Text */
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            padding: 1.2rem;
-            border-radius: 12px;
-            border: 1.5px solid #334155;
-            outline: none;
-            font-size: 1.1rem; /* Clear readability ke liye thoda bada size */
-            line-height: 1.6; /* Proper spacing between lines */
-            resize: vertical;
-            transition: border-color 0.3s, box-shadow 0.3s;
-        }
-
-        .notes-box:focus {
-            border-color: #38bdf8;
-            box-shadow: 0 0 12px rgba(56, 189, 248, 0.25);
-        }
-
-        .notes-box::placeholder {
-            color: #64748b; /* Placeholder text halka grey rahega */
-        }
-
-        /* Footer */
-        footer {
-            margin-top: auto;
-            background: #090d16;
-            text-align: center;
-            padding: 2rem;
-            color: #64748b;
-            border-top: 1px solid #1e293b;
-        }
-    </style>
+  <meta name="google-site-verification" content="_zQiS2VMlqHE4Y9oFX4Wg0Ms_Up7EtT_tY6-v1oSOac" />
+https://www.effectivecpmnetwork.com/b7bpqzxw?key=874b7826e528c91872e957287e64e3f7
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+<title>Flappy Quest</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{width:100%;height:100%;overflow:hidden;background:#08132b;font-family:system-ui,Arial,sans-serif}
+body{touch-action:none}
+#game{display:block;width:100vw;height:100vh}
+#hud{position:fixed;top:14px;left:0;right:0;display:flex;justify-content:space-between;align-items:center;padding:0 16px;color:#fff;font-weight:800;text-shadow:0 2px 4px #000;pointer-events:none}
+.badge{background:#0008;border:1px solid #fff4;border-radius:14px;padding:8px 12px;backdrop-filter:blur(6px)}
+#score{font-size:28px;min-width:70px;text-align:center}
+#power{font-size:13px;display:none}
+#overlay{position:fixed;inset:0;display:flex;align-items:center;justify-content:center;padding:22px;background:#03102b77}
+.panel{width:min(430px,92vw);text-align:center;color:#fff;background:linear-gradient(160deg,#142a57ee,#07152fee);border:1px solid #ffffff25;border-radius:28px;padding:28px 22px;box-shadow:0 20px 70px #0009}
+h1{font-size:42px;letter-spacing:-1px;margin-bottom:7px}
+.subtitle{color:#b9d7ff;margin-bottom:20px}
+button{border:0;border-radius:16px;padding:14px 25px;font-size:18px;font-weight:900;color:#07152f;background:#ffd83d;box-shadow:0 7px 0 #c89d13;cursor:pointer}
+button:active{transform:translateY(4px);box-shadow:0 3px 0 #c89d13}
+.small{font-size:13px;color:#a8bddc;margin-top:18px;line-height:1.5}
+.hidden{display:none!important}
+#flash{position:fixed;inset:0;background:#fff;opacity:0;pointer-events:none}
+</style>
 </head>
 <body>
-
-    <!-- Header -->
-    <header>
-        <div class="logo" onclick="showHome()">
-            <i class="fa-solid fa-note-sticky"></i> Notes Keeper
-        </div>
-        <button class="add-btn" id="addNavBtn" onclick="openModal()">
-            <i class="fa-solid fa-plus"></i> Add New Note
-        </button>
-    </header>
-
-    <!-- Main Dashboard View -->
-    <div id="mainDashboard">
-        <!-- Hero Section -->
-        <section class="hero">
-            <h1>Welcome to <span>Notes Keeper</span></h1>
-            <p>Your custom personal notes and ideas collection hub.</p>
-
-            <!-- Search Bar -->
-            <div class="search-container">
-                <i class="fa-solid fa-magnifying-glass"></i>
-                <input type="text" id="searchInput" onkeyup="searchNotes()" placeholder="Search added notes...">
-            </div>
-        </section>
-
-        <!-- Notes Section -->
-        <section class="library-section">
-            <div class="section-header">
-                <h2 class="section-title">Your Notes</h2>
-            </div>
-            
-            <div class="grid" id="notesGrid">
-                <!-- Cards yahan dynamic add honge -->
-            </div>
-        </section>
+<canvas id="game"></canvas>
+<div id="hud">
+  <div class="badge">🏆 BEST <span id="best">0</span></div>
+  <div id="score" class="badge">0</div>
+  <div id="power" class="badge">🛡️ SHIELD</div>
+</div>
+<div id="overlay">
+  <div class="panel">
+    <h1>🐦 Flappy Quest</h1>
+    <div class="subtitle">Tap to fly • dodge • collect • survive</div>
+    <button id="start">START QUEST</button>
+    <div class="small">
+      Tap/click or press <b>SPACE</b> to flap upward.<br>
+      Pass the gates, grab coins and power-ups. The world gets faster and trickier!
     </div>
+  </div>
+</div>
+<div id="flash"></div>
 
-    <!-- Notes Editor Section (Note Open Karne Par Khulega) -->
-    <section id="editorSection">
-        <button class="back-btn" onclick="showHome()">
-            <i class="fa-solid fa-arrow-left"></i> Back to Dashboard
-        </button>
-        <div class="editor-header">
-            <h1 id="activeNoteTitle" style="color: #38bdf8; margin-bottom: 0.5rem;">Note Title</h1>
-            <p id="activeNoteDesc" style="color: #94a3b8;">Description details...</p>
-        </div>
-        
-        <div style="margin-bottom: 1.5rem;">
-            <label style="display:block; margin-bottom: 0.5rem; color: #94a3b8;">Write / Edit Your Note Details Here:</label>
-            <textarea id="noteTextarea" class="notes-box" placeholder="Start typing your note here..."></textarea>
-        </div>
+<script>
+const canvas=document.getElementById("game"),ctx=canvas.getContext("2d");
+const overlay=document.getElementById("overlay"),startBtn=document.getElementById("start");
+const scoreEl=document.getElementById("score"),bestEl=document.getElementById("best"),powerEl=document.getElementById("power");
+const flash=document.getElementById("flash");
 
-        <button class="btn-save" style="font-size: 1rem; padding: 0.8rem 1.5rem;" onclick="saveNoteContent()">
-            <i class="fa-solid fa-floppy-disk"></i> Save Note
-        </button>
-    </section>
+let W,H,dpr,playing=false,last=0,score=0,best=+localStorage.getItem("flappyQuestBest")||0;
+let speed=220,gravity=1150,flap=-390,spawnTimer=0,coinTimer=0,powerTimer=0;
+let obstacles=[],coins=[],powers=[],particles=[],clouds=[],shake=0;
+let bird={x:0,y:0,vy:0,r:18,rot:0,shield:0};
+bestEl.textContent=best;
 
-    <!-- Modal Form for Adding Note -->
-    <div class="modal" id="addModal">
-        <div class="modal-content">
-            <h2>Add New Note</h2>
-            <div class="form-group">
-                <label>Note Title / Topic</label>
-                <input type="text" id="noteTitleInput" placeholder="e.g. Work Ideas, Shopping List, Project Notes">
-            </div>
-            <div class="form-group">
-                <label>Short Description</label>
-                <textarea id="noteDescInput" rows="3" placeholder="Aap is note mein kya rakh rahe hain..."></textarea>
-            </div>
-            <div class="modal-btns">
-                <button class="btn-cancel" onclick="closeModal()">Cancel</button>
-                <button class="btn-save" onclick="addNote()">Save Note</button>
-            </div>
-        </div>
-    </div>
+function resize(){
+  dpr=Math.min(devicePixelRatio||1,2); W=innerWidth; H=innerHeight;
+  canvas.width=W*dpr; canvas.height=H*dpr; canvas.style.width=W+"px"; canvas.style.height=H+"px";
+  ctx.setTransform(dpr,0,0,dpr,0,0);
+  if(!playing){bird.x=W*.27;bird.y=H*.48}
+}
+addEventListener("resize",resize); resize();
 
-    <!-- Footer -->
-    <footer>
-        <p>&copy; 2026 Notes Keeper. Designed for Everyone.</p>
-    </footer>
+for(let i=0;i<18;i++) clouds.push({x:Math.random()*W,y:Math.random()*H*.7,r:18+Math.random()*35,s:.1+Math.random()*.3});
+function reset(){
+  score=0;speed=220;gravity=1150;spawnTimer=.2;coinTimer=1.2;powerTimer=7;
+  obstacles=[];coins=[];powers=[];particles=[];shake=0;
+  bird={x:W*.27,y:H*.48,vy:0,r:18,rot:0,shield:0};
+  scoreEl.textContent=0; powerEl.style.display="none";
+}
+function startGame(){
+  reset(); playing=true; overlay.classList.add("hidden"); last=performance.now();
+  beep(520,.06,"sine"); requestAnimationFrame(loop);
+}
+function gameOver(){
+  if(!playing)return; playing=false; flash.style.opacity=.8; setTimeout(()=>flash.style.opacity=0,60);
+  if(score>best){best=score;localStorage.setItem("flappyQuestBest",best);bestEl.textContent=best}
+  beep(100,.22,"sawtooth");
+  overlay.innerHTML=`<div class="panel"><h1>💥 Quest Over</h1>
+  <div class="subtitle">Your score: <b style="color:#ffd83d;font-size:25px">${score}</b> &nbsp; Best: <b>${best}</b></div>
+  <button id="restart">PLAY AGAIN</button>
+  <div class="small">Tip: short taps give you more control. Watch for moving gates and grab the shield.</div></div>`;
+  overlay.classList.remove("hidden");
+  document.getElementById("restart").onclick=startGame;
+}
+startBtn.onclick=startGame;
 
-    <!-- JavaScript Logic -->
-    <script>
-        let notesList = JSON.parse(localStorage.getItem('notesKeeperData')) || [];
-        let currentNoteIndex = null;
+function flapUp(){
+  if(!playing)return;
+  bird.vy=flap;
+  burst(bird.x,bird.y+10,5,"#fff1a8");
+  beep(620,.045,"square");
+}
+addEventListener("pointerdown",e=>{if(playing)flapUp()});
+addEventListener("keydown",e=>{if(e.code==="Space"){e.preventDefault(); if(!playing)startGame(); else flapUp()}});
 
-        // Page load hone par notes render karein
-        window.onload = function() {
-            renderNotes();
-        };
+function beep(freq,dur,type){
+  try{
+    const A=beep.a||(beep.a=new (AudioContext||webkitAudioContext)());
+    const o=A.createOscillator(),g=A.createGain();o.type=type;o.frequency.value=freq;
+    g.gain.setValueAtTime(.045,A.currentTime);g.gain.exponentialRampToValueAtTime(.001,A.currentTime+dur);
+    o.connect(g).connect(A.destination);o.start();o.stop(A.currentTime+dur);
+  }catch(e){}
+}
+function burst(x,y,n,color){
+  for(let i=0;i<n;i++){let a=Math.random()*Math.PI*2,s=40+Math.random()*120;
+    particles.push({x,y,vx:Math.cos(a)*s,vy:Math.sin(a)*s,life:.5+Math.random()*.4,color,r:2+Math.random()*3});
+  }
+}
+function rectCircle(rx,ry,rw,rh,cx,cy,cr){
+  let x=Math.max(rx,Math.min(cx,rx+rw)),y=Math.max(ry,Math.min(cy,ry+rh));
+  return (cx-x)**2+(cy-y)**2<cr**2;
+}
+function spawnGate(){
+  // The TOP and BOTTOM obstacles are one pair.
+  // Their gap is always kept BETWEEN them.
+  const gap=Math.max(175,235-score*1.2);
+  const margin=70;
+  const minY=margin;
+  const maxY=Math.max(minY,H-margin-gap);
+  const gy=minY+Math.random()*Math.max(1,maxY-minY);
 
-        function renderNotes() {
-            let grid = document.getElementById('notesGrid');
-            grid.innerHTML = '';
+  const moving=score>7 && Math.random()<0.35;
+  obstacles.push({
+    x:W+45,
+    w:72,
+    gap:gap,
+    gy:gy,
+    base:gy,
+    minY:minY,
+    maxY:maxY,
+    moving:moving,
+    phase:Math.random()*Math.PI*2,
+    passed:false
+  });
+}
+function spawnCoin(){
+  let c={x:W+35,y:90+Math.random()*(H-180),r:9,t:0};
+  coins.push(c);
+}
+function spawnPower(){
+  powers.push({x:W+40,y:100+Math.random()*(H-200),r:13,t:0});
+}
+function update(dt){
+  speed+=dt*2.2;
+  gravity=1120+Math.min(score*10,400);
+  bird.vy+=gravity*dt;bird.y+=bird.vy*dt;bird.rot=Math.max(-.55,Math.min(1.2,bird.vy/550));
+  bird.shield=Math.max(0,bird.shield-dt);
+  powerEl.style.display=bird.shield>0?"block":"none";
 
-            if (notesList.length === 0) {
-                grid.innerHTML = `
-                    <div class="empty-msg">
-                        <i class="fa-solid fa-folder-open" style="font-size: 2.5rem; margin-bottom: 10px;"></i>
-                        <p>Abhi koi note nahi hai! Upar <b>"+ Add New Note"</b> par click karke apna pehla note add karein.</p>
-                    </div>`;
-                return;
-            }
+  spawnTimer-=dt;if(spawnTimer<=0){spawnGate();spawnTimer=Math.max(.85,1.45-score*.012)}
+  coinTimer-=dt;if(coinTimer<=0){spawnCoin();coinTimer=1.1+Math.random()*1.2}
+  powerTimer-=dt;if(powerTimer<=0){if(Math.random()<.65)spawnPower();powerTimer=9+Math.random()*6}
 
-            notesList.forEach((item, index) => {
-                let card = document.createElement('div');
-                card.className = 'card';
-                card.innerHTML = `
-                    <div>
-                        <div class="card-header">
-                            <i class="fa-solid fa-pen-to-square card-icon"></i>
-                            <h3 class="card-title">${item.title}</h3>
-                        </div>
-                        <p class="card-desc">${item.desc || 'No description added.'}</p>
-                    </div>
-                    <button class="card-btn" onclick="openNoteEditor(${index})">Open Note</button>
-                `;
-                grid.appendChild(card);
-            });
-        }
+  obstacles.forEach(o=>{
+    o.x-=speed*dt;
+    if(o.moving){
+      // Move the whole pair together, never moving the two obstacles apart.
+      const amount=Math.min(55,Math.max(20,(o.maxY-o.minY)*0.45));
+      o.gy=o.base+Math.sin(performance.now()/650+o.phase)*amount;
+      o.gy=Math.max(o.minY,Math.min(o.maxY,o.gy));
+    }
+    if(!o.passed && o.x+o.w<bird.x){o.passed=true;score++;scoreEl.textContent=score;beep(880,.05,"sine");burst(o.x+o.w,o.gy+o.gap/2,7,"#ffd83d")}
+  });
+  coins.forEach(c=>{c.x-=speed*dt;c.t+=dt});
+  powers.forEach(p=>{p.x-=speed*dt;p.t+=dt});
+  obstacles=obstacles.filter(o=>o.x+o.w>-30);coins=coins.filter(c=>c.x>-30);powers=powers.filter(p=>p.x>-30);
 
-        // Modal Functions
-        function openModal() {
-            document.getElementById('addModal').style.display = 'flex';
-        }
+  for(const c of coins)if(Math.hypot(c.x-bird.x,c.y-bird.y)<c.r+bird.r){
+    c.x=-999;score++;scoreEl.textContent=score;beep(1100,.06,"sine");burst(c.x,c.y,12,"#ffe44b")
+  }
+  for(const p of powers)if(Math.hypot(p.x-bird.x,p.y-bird.y)<p.r+bird.r){
+    p.x=-999;bird.shield=6;beep(360,.15,"triangle");burst(bird.x,bird.y,18,"#64d9ff")
+  }
 
-        function closeModal() {
-            document.getElementById('addModal').style.display = 'none';
-            document.getElementById('noteTitleInput').value = '';
-            document.getElementById('noteDescInput').value = '';
-        }
+  let hit=bird.y-bird.r<0 || bird.y+bird.r>H;
+  for(const o of obstacles){
+    if(rectCircle(o.x,0,o.w,o.gy,bird.x,bird.y,bird.r) ||
+       rectCircle(o.x,o.gy+o.gap,o.w,H-o.gy-o.gap,bird.x,bird.y,bird.r)) hit=true;
+  }
+  if(hit){
+    if(bird.shield>0){bird.shield=0;burst(bird.x,bird.y,25,"#64d9ff");shake=8;bird.y=Math.max(40,Math.min(H-40,bird.y));bird.vy=-250}
+    else {gameOver();return}
+  }
+  particles.forEach(p=>{p.x+=p.vx*dt;p.y+=p.vy*dt;p.vy+=300*dt;p.life-=dt});
+  particles=particles.filter(p=>p.life>0);
+  shake=Math.max(0,shake-dt*20);
+}
+function draw(){
+  let sx=(Math.random()-.5)*shake,sy=(Math.random()-.5)*shake;
+  ctx.save();ctx.translate(sx,sy);
+  let g=ctx.createLinearGradient(0,0,0,H);g.addColorStop(0,"#0875df");g.addColorStop(.55,"#44c8ed");g.addColorStop(1,"#b7f0d4");
+  ctx.fillStyle=g;ctx.fillRect(-20,-20,W+40,H+40);
+  // distant hills
+  ctx.fillStyle="#62b77a";ctx.beginPath();ctx.moveTo(0,H);
+  for(let x=0;x<=W;x+=90)ctx.quadraticCurveTo(x+45,H-100-Math.sin(x)*20,x+90,H-35);
+  ctx.lineTo(W,H);ctx.fill();
+  clouds.forEach(c=>{c.x-=c.s;if(c.x<-100)c.x=W+100;ctx.fillStyle="#fff8";ctx.beginPath();ctx.arc(c.x,c.y,c.r,0,7);ctx.arc(c.x+c.r*.9,c.y+5,c.r*.75,0,7);ctx.fill()});
+  // MOVING GATE PAIRS:
+  // top obstacle ends at o.gy
+  // bottom obstacle starts at o.gy + o.gap
+  // so the empty space is ALWAYS in the middle.
+  for(const o of obstacles){
+    drawPipe(o.x,0,o.w,o.gy,true);
+    drawPipe(o.x,o.gy+o.gap,o.w,H-(o.gy+o.gap),false);
 
-        function addNote() {
-            let title = document.getElementById('noteTitleInput').value;
-            let desc = document.getElementById('noteDescInput').value;
-
-            if (title.trim() === "") {
-                alert("Kripya Note ka title zaroor likhein!");
-                return;
-            }
-
-            notesList.push({ title: title, desc: desc, content: "" });
-            localStorage.setItem('notesKeeperData', JSON.stringify(notesList));
-            
-            renderNotes();
-            closeModal();
-        }
-
-        // Note Open Karne Ka Function
-        function openNoteEditor(index) {
-            currentNoteIndex = index;
-            let note = notesList[index];
-
-            document.getElementById('mainDashboard').style.display = 'none';
-            document.getElementById('addNavBtn').style.display = 'none';
-            document.getElementById('editorSection').style.display = 'block';
-
-            document.getElementById('activeNoteTitle').innerText = note.title;
-            document.getElementById('activeNoteDesc').innerText = note.desc;
-            document.getElementById('noteTextarea').value = note.content || '';
-        }
-
-        function saveNoteContent() {
-            if (currentNoteIndex !== null) {
-                notesList[currentNoteIndex].content = document.getElementById('noteTextarea').value;
-                localStorage.setItem('notesKeeperData', JSON.stringify(notesList));
-                alert("Note Safaltapurvak Save Ho Gaya Hai!");
-            }
-        }
-
-        function showHome() {
-            document.getElementById('mainDashboard').style.display = 'block';
-            document.getElementById('addNavBtn').style.display = 'flex';
-            document.getElementById('editorSection').style.display = 'none';
-            renderNotes();
-        }
-
-        // Search Function
-        function searchNotes() {
-            let input = document.getElementById('searchInput').value.toLowerCase();
-            let cards = document.getElementsByClassName('card');
-
-            for (let i = 0; i < cards.length; i++) {
-                let title = cards[i].querySelector('.card-title').innerText.toLowerCase();
-                if (title.includes(input)) {
-                    cards[i].style.display = "flex";
-                } else {
-                    cards[i].style.display = "none";
-                }
-            }
-        }
-    </script>
-    <footer>
-    <p>© 2026 Notes Keeper - Dynamic Notes Hub. All Rights Reserved.</p>
-    </footer>
-    
+    // subtle glow around the safe gap
+    ctx.save();
+    ctx.strokeStyle="#ffffff22";
+    ctx.lineWidth=2;
+    ctx.setLineDash([6,8]);
+    ctx.beginPath();
+    ctx.moveTo(o.x+o.w/2,o.gy+8);
+    ctx.lineTo(o.x+o.w/2,o.gy+o.gap-8);
+    ctx.stroke();
+    ctx.restore();
+  }
+  // coins
+  for(const c of coins){ctx.save();ctx.translate(c.x,c.y);ctx.rotate(c.t*4);ctx.fillStyle="#ffd83d";ctx.beginPath();ctx.arc(0,0,c.r,0,7);ctx.fill();ctx.strokeStyle="#fff3a1";ctx.lineWidth=3;ctx.stroke();ctx.fillStyle="#9a6d00";ctx.font="bold 12px Arial";ctx.textAlign="center";ctx.fillText("★",0,4);ctx.restore()}
+  // power
+  for(const p of powers){ctx.save();ctx.translate(p.x,p.y);let sc=1+Math.sin(p.t*6)*.1;ctx.scale(sc,sc);ctx.fillStyle="#48d9ff";ctx.beginPath();ctx.arc(0,0,p.r,0,7);ctx.fill();ctx.strokeStyle="#fff";ctx.lineWidth=2;ctx.stroke();ctx.fillStyle="#073a67";ctx.font="bold 16px Arial";ctx.textAlign="center";ctx.fillText("S",0,6);ctx.restore()}
+  // particles
+  particles.forEach(p=>{ctx.globalAlpha=Math.max(0,p.life);ctx.fillStyle=p.color;ctx.beginPath();ctx.arc(p.x,p.y,p.r,0,7);ctx.fill()});ctx.globalAlpha=1;
+  // bird
+  ctx.save();ctx.translate(bird.x,bird.y);ctx.rotate(bird.rot);
+  if(bird.shield>0){ctx.strokeStyle="#8ce9ff";ctx.lineWidth=4;ctx.beginPath();ctx.arc(0,0,30+Math.sin(performance.now()/100)*2,0,7);ctx.stroke()}
+  ctx.fillStyle="#ffcf33";ctx.beginPath();ctx.ellipse(0,0,21,16,0,0,7);ctx.fill();
+  ctx.fillStyle="#fff";ctx.beginPath();ctx.arc(8,-6,7,0,7);ctx.fill();ctx.fillStyle="#111";ctx.beginPath();ctx.arc(10,-6,3,0,7);ctx.fill();
+  ctx.fillStyle="#f39b20";ctx.beginPath();ctx.moveTo(18,0);ctx.lineTo(33,5);ctx.lineTo(18,9);ctx.closePath();ctx.fill();
+  ctx.fillStyle="#f5a51b";ctx.beginPath();ctx.ellipse(-5,7,12,5,-.4,0,7);ctx.fill();
+  ctx.restore();ctx.restore();
+}
+function drawPipe(x,y,w,h,top){
+  if(h<=0)return;
+  let grd=ctx.createLinearGradient(x,0,x+w,0);grd.addColorStop(0,"#0b9e4b");grd.addColorStop(.45,"#49db69");grd.addColorStop(1,"#08753a");
+  ctx.fillStyle=grd;ctx.fillRect(x,y,w,h);
+  ctx.strokeStyle="#075d31";ctx.lineWidth=3;ctx.strokeRect(x,y,w,h);
+  ctx.fillStyle="#55e776";
+  if(top)ctx.fillRect(x-7,y+h-16,w+14,16); else ctx.fillRect(x-7,y,w+14,16);
+}
+function loop(t){
+  if(!playing)return;
+  let dt=Math.min(.032,(t-last)/1000);last=t;update(dt);draw();requestAnimationFrame(loop);
+}
+draw();
+</script>
 </body>
 </html>
